@@ -1,0 +1,70 @@
+@html.extend('layout', function(model) {
+
+  @html.block('styles' , function(){
+     <!-- Custom styles for this page -->
+     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  })
+
+  @html.block('content', function(model) {
+            <div class="container-fluid">
+              <a href="/admin/products/addProduct"> <button type="button" class="btn btn-success float-right">
+                  Add Product
+              </button></a>
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Products</h1>
+          
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>SubTitle</th>
+                      <th>Price</th>
+                      <th>Description</th>
+                      <th>Iamge</th>
+                       <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Title</th>
+                      <th>SubTitle</th>
+                      <th>Price</th>
+                      <th>Description</th>
+                      <th>Image</th>
+                       <th scope="col">Actions</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                  @model.products.forEach(function(product){
+                    <tr>
+                      <td>@product.title</td>
+                      <td>@product.subTitle</td>
+                      <td>@product.price</td>
+                      <td>@product.description</td>
+                      <td><img src="@product.image" width="50px" height="50px" alt="No Image"/></td>
+                       <td>
+                        <a href="/admin/products/editProduct/@product.id"><button class="btn btn-outline-primary">Edit</button></a> |
+                       <a href="/admin/products/deleteProduct/@product.id"><button class="btn btn-danger">Delete</button></a>
+                    </td>
+                    </tr>
+                  })
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+  })
+
+  @html.block('scripts' , function(){
+      <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+      <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+      <script src="/js/demo/datatables-demo.js"></script>
+  })
+
+})

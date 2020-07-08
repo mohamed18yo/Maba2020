@@ -1,0 +1,33 @@
+@html.extend('userLayout', function() {
+ @html.block('content', function() {
+        <div class="row">
+            @model.products.map(function(product){
+                <div class="col-3">
+                    <div class="card mb-3">
+                        <h3 class="card-header">@product.title</h3>
+                        <div class="card-body">
+                            <h5 class="card-title">@product.title</h5>
+                            <h6 class="card-subtitle text-muted">@product.subtitle</h6>
+                        </div>
+                        <div style="height: 200px; width: 100%; display: block; background-image:url(@product.image)"> 
+                        </div>
+                        
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@product.price $</li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="/cart/add/@product.id" class="btn btn-primary ">
+                                Add to cart
+                            </a>
+                            <a href="/product/@product.id" class="btn btn-outline-primary float-right">
+                                View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            })
+         
+        </div>
+ })
+
+})

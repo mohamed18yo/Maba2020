@@ -1,0 +1,26 @@
+@html.extend('layout', function(model) {
+  @html.block('content', function(model) { 
+        <div class="container-fluid">
+          <h1 class="h3 mb-4 text-gray-800">Notifications</h1>
+              <form action="/sendNotification" method="post" class="user">
+                    <div class="form-group">
+                       <select name="userId" class="form-control">
+                            @model.users.map(function(user){
+                                <option value="@user._id">@user.firstName @user.lastName</option>
+                            })
+                            <option value="all">All</option>
+                       </select>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="title" class="form-control form-control-user" placeholder="title">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="text" class="form-control form-control-user" placeholder="text">
+                    </div>
+                    <button  class="btn btn-primary btn-user btn-block">
+                      Send
+                    </button>
+                  </form>
+        </div>
+   })
+})

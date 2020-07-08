@@ -1,0 +1,29 @@
+@html.extend('layout', function(model) {
+
+      @html.block('content', function(model) {
+          <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">SMS</h1>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-body">
+                <form action="/admin/sms/send" method="post">
+                    <div class="form-group">
+                        <label for="text">Phone</label>
+                        <input type="text" class="form-control" placeholder="Enter phohe" name="phone">
+                        <small id="text" class="form-text text-muted">Please start with 97059....</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Text</label>
+                        <input type="text" class="form-control" name="text" placeholder="Text">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+          </div>
+
+        </div>
+      })
+      
+})
