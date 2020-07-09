@@ -1,3 +1,9 @@
-.bg-login-image , .bg-register-image{
-    background: url("https://up.edu.ps/ar/assest/img/up_logo.png")
+.bg-register-image {
+    background-image: url('https://www.nooio.com.br/content/imagens/onepage_restaurant.jpg');
 }
+.bg-login-image {
+    background-image: url('https://drscdn.500px.org/photo/43619656/q%3D80_m%3D1500/v2?sig=001e3ba415e604f9fac8263f95d41c4cac9c8feab7dbe4ee745e55a4eda6035d');
+}
+.bg-password-image {
+    background-image: url('https://lh4.googleusercontent.com/proxy/5WL7Ihxv8SPI9A131VZt2NRgKF1KdJEIQmQT0-Me68GArG6e9xya-2ely9b9ksE9FuaEc_WicHchIW-x0GZ9xom5yCuwx3iuc8Mb7A=w3840-h2160-p-k-no-nd-mv');
+    }
