@@ -111,7 +111,7 @@ router.post("/api/login", function (req, res) {
 });
 
 router.get("/notifications", (req, res) => {
-  db.User.find(function (err, users) {
+  User.find(function (err, users) {
     res.render("notifications", { users: users });
   });
 });
