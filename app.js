@@ -170,6 +170,9 @@ app.use(function(req , res , next) {
 app.use("/", indexRouter);
 app.use("/checkout", user , checkoutRouter);
 app.use('/cart' , user, cartRouter);
+
+app.use('/dashboard' , admin , cartRouter);
+
 app.use('/admin/sms' , admin , smsRouter);
 app.use("/admin/users", admin, usersRouter);
 app.use("/admin/products", admin,  productsRouter);
