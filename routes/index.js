@@ -4,20 +4,20 @@ var passport = require("passport");
 var jwt = require("jsonwebtoken");
 
 var admin = require("firebase-admin");
-
+var Admin = require('../middlewares/admin');
 var serviceAccount = require("../serviceAccountKey.json");
-
+var Email = require("../helper/email");
 var User = require("../models/user");
 var Product = require("../models/product");
 var shared = require("../models/shared");
-
+   
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://appnotify-9296a.firebaseio.com",
 });
 
 /* GET home page. */
-router.get("/dashboard", async function (req, res, next) {
+router.get("/dashboard",Admin ,  async function (req, res, next) {
   res.render("dashboard", {
     title: "index",
     usersCount: await shared.usersCount(),
@@ -110,13 +110,13 @@ router.post("/api/login", function (req, res) {
   }
 });
 
-router.get("/notifications", (req, res) => {
+router.get("/notifications",Admin , (req, res) => {
   User.find(function (err, users) {
     res.render("notifications", { users: users });
   });
 });
 
-router.post("/sendNotification", (req, res) => {
+router.post("/sendNotification", Admin , (req, res) => {
   if (req.body.userId === "all") {
     admin.messaging().sendAll({ titel: req.body.title, body: req.body.text });
   } else {
@@ -156,6 +156,28 @@ router.get("/product/:id", async (req, res) => {
     });
   });
 });
+
+router.get("/recoverPass", (req, res) => {
+  res.render('recoverPass');
+ 
+
+});  
+router.post('/sendEmail', (req, res)=>{
+   var mailOptions = {
+    from: "mohamed18yosef@gmail.com",
+    to: req.body.email,
+    subject: "Recover Your Password",
+    text: "This is New Password ",
+  };
+
+  Email.transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+})
 
 router.get("/logout", (req, res) => {
   req.logout();

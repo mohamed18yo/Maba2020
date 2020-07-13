@@ -13,7 +13,7 @@ var productsRouter = require("./routes/products");
 var postsRouter = require("./routes/api/posts");
 var tagsRouter = require("./routes/api/tag");
 
-
+var nodemailer = require("nodemailer");
 var passport = require("passport");
 var passportLocal = require("passport-local");
 var passportFacebook = require("passport-facebook");

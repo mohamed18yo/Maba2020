@@ -33,7 +33,7 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                  @model.users.map(function(user){
+                  @model.users.forEach(function(user){
                     <tr>
                       <td>@user.firstName</td>
                       <td>@user.lastName</td>

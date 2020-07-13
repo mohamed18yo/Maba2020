@@ -1,7 +1,7 @@
 @html.extend('userLayout', function() {
  @html.block('content', function() {
         <div class="row">
-            @model.products.map(function(product){
+            @model.products.forEach(function(product){
                 <div class="col-3">
                     <div class="card mb-3">
                         <h3 class="card-header">@product.title</h3>
