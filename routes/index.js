@@ -5,6 +5,7 @@ var jwt = require("jsonwebtoken");
 
 var admin = require("firebase-admin");
 var Admin = require('../middlewares/admin');
+var user = require('../middlewares/user');
 var serviceAccount = require("../serviceAccountKey.json");
 var Email = require("../helper/email");
 var User = require("../models/user");
@@ -43,7 +44,7 @@ router.post(
     } else {
       res.redirect("/");
     }
-  }
+  }  
 );
 
 /* GET register page. */
@@ -104,7 +105,8 @@ router.get(
 router.post("/api/login", function (req, res) {
   if (req.body.username == "Oday" && req.body.password == "123456") {
     var token = jwt.sign({ firstName: "Oday", lastName: "Alqarra" }, "authApp");
-    res.json({ token });
+    // res.json({ token });
+    res.json('wellcom Mohamed')
   } else {
     res.json("Not found your account");
   }
@@ -146,7 +148,7 @@ router.get("/", async (req, res) => {
   });
 });
 
-router.get("/product/:id", async (req, res) => {
+router.get("/product/:id",  async (req, res) => {
   Product.findById(req.params.id, async (err, product) => {
     res.render("product", {
       product,

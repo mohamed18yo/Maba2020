@@ -13,7 +13,7 @@
                         </div>
                         
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">@product.price $</li>
+                            <li class="list-group-item">Price : @product.price $</li>
                         </ul>
                         <div class="card-body">
                             <a href="/cart/add/@product.id" class="btn btn-primary ">
